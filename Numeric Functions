@@ -1,0 +1,29 @@
+-- Absolute value
+SELECT ABS(-10) AS AbsoluteValue;
+
+-- Ceiling (round up)
+SELECT CEILING(9.25) AS CeilingValue;
+
+-- Floor (round down)
+SELECT FLOOR(9.75) AS FloorValue;
+
+-- Round to the nearest integer
+SELECT ROUND(9.75) AS RoundedValue;
+
+-- Square root
+SELECT SQRT(25) AS SquareRootValue;
+
+-- Exponential (e raised to the power of a number)
+SELECT EXP(2) AS ExponentialValue;
+
+-- Natural logarithm (base e)
+SELECT LN(10) AS NaturalLogarithmValue;
+
+-- Logarithm (base 10)
+SELECT LOG10(100) AS LogarithmBase10Value;
+
+-- Power function
+SELECT POWER(2, 3) AS PowerValue;
+
+-- Modulo (remainder of division)
+SELECT MOD(10, 3) AS ModuloValue;
