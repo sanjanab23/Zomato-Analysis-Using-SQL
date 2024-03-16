@@ -1,0 +1,54 @@
+-- AddUserProcedure: Adds a new user to the Users table.
+CREATE PROCEDURE AddUserProcedure (
+    IN p_Username VARCHAR(50),
+    IN p_Email VARCHAR(100),
+    IN p_Password VARCHAR(100),
+    IN p_JoinDate DATE,
+    IN p_UserType ENUM('Regular', 'Premium')
+)
+BEGIN
+    INSERT INTO Users (Username, Email, Password, JoinDate, UserType) 
+    VALUES (p_Username, p_Email, p_Password, p_JoinDate, p_UserType);
+END;
+
+-- UpdateUserPasswordProcedure: Updates the password for a given user.
+CREATE PROCEDURE UpdateUserPasswordProcedure (
+    IN p_UserID INT,
+    IN p_NewPassword VARCHAR(100)
+)
+BEGIN
+    UPDATE Users 
+    SET Password = p_NewPassword 
+    WHERE UserID = p_UserID;
+END;
+
+-- GetOrderDetailsProcedure: Retrieves details of a specific order.
+CREATE PROCEDURE GetOrderDetailsProcedure (
+    IN p_OrderID INT
+)
+BEGIN
+    SELECT * 
+    FROM Orders 
+    WHERE OrderID = p_OrderID;
+END;
+
+-- DeleteUserProcedure: Deletes a user and associated data.
+CREATE PROCEDURE DeleteUserProcedure (
+    IN p_UserID INT
+)
+BEGIN
+    DELETE FROM Orders WHERE UserID = p_UserID;
+    DELETE FROM Addresses WHERE UserID = p_UserID;
+    DELETE FROM Users WHERE UserID = p_UserID;
+END;
+
+-- GetAverageRatingProcedure: Calculates the average rating for a given restaurant.
+CREATE PROCEDURE GetAverageRatingProcedure (
+    IN p_RestaurantID INT,
+    OUT p_AverageRating FLOAT
+)
+BEGIN
+    SELECT AVG(Rating) INTO p_AverageRating
+    FROM Reviews
+    WHERE RestaurantID = p_RestaurantID;
+END;
