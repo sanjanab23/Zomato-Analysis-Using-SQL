@@ -1,0 +1,50 @@
+-- AuditUserInsertTrigger: Logs insertions into the Users table.
+CREATE TRIGGER AuditUserInsertTrigger
+AFTER INSERT ON Users
+FOR EACH ROW
+BEGIN
+    INSERT INTO UserAuditLog (UserID, Action, Timestamp)
+    VALUES (NEW.UserID, 'INSERT', NOW());
+END;
+
+-- UpdateOrderStatusTrigger: Updates the status of an order after insertion into the Orders table.
+CREATE TRIGGER UpdateOrderStatusTrigger
+AFTER INSERT ON Orders
+FOR EACH ROW
+BEGIN
+    UPDATE Orders 
+    SET Status = 'Pending'
+    WHERE OrderID = NEW.OrderID;
+END;
+
+-- DeleteUserOrdersTrigger: Deletes orders associated with a user when the user is deleted.
+CREATE TRIGGER DeleteUserOrdersTrigger
+BEFORE DELETE ON Users
+FOR EACH ROW
+BEGIN
+    DELETE FROM Orders WHERE UserID = OLD.UserID;
+END;
+
+-- IncrementRestaurantOrderCountTrigger: Increments the order count for a restaurant after insertion into the Orders table.
+CREATE TRIGGER IncrementRestaurantOrderCountTrigger
+AFTER INSERT ON Orders
+FOR EACH ROW
+BEGIN
+    UPDATE Restaurants
+    SET OrderCount = OrderCount + 1
+    WHERE RestaurantID = NEW.RestaurantID;
+END;
+
+-- CalculateTotalAmountTrigger: Calculates the total amount for an order after insertion into the OrderDetails table.
+CREATE TRIGGER CalculateTotalAmountTrigger
+AFTER INSERT ON OrderDetails
+FOR EACH ROW
+BEGIN
+    UPDATE Orders
+    SET TotalAmount = (
+        SELECT SUM(Quantity * UnitPrice)
+        FROM OrderDetails
+        WHERE OrderID = NEW.OrderID
+    )
+    WHERE OrderID = NEW.OrderID;
+END;
