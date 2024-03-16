@@ -1,0 +1,29 @@
+-- Current date
+SELECT CURRENT_DATE AS CurrentDate;
+
+-- Current time
+SELECT CURRENT_TIME AS CurrentTime;
+
+-- Current timestamp
+SELECT CURRENT_TIMESTAMP AS CurrentTimestamp;
+
+-- Extract year from date
+SELECT EXTRACT(YEAR FROM '2024-03-16') AS ExtractedYear;
+
+-- Extract month from date
+SELECT EXTRACT(MONTH FROM '2024-03-16') AS ExtractedMonth;
+
+-- Extract day from date
+SELECT EXTRACT(DAY FROM '2024-03-16') AS ExtractedDay;
+
+-- Add days to a date
+SELECT DATE_ADD('2024-03-16', INTERVAL 7 DAY) AS DateAfterAddingDays;
+
+-- Subtract days from a date
+SELECT DATE_SUB('2024-03-16', INTERVAL 7 DAY) AS DateAfterSubtractingDays;
+
+-- Calculate the difference in days between two dates
+SELECT DATEDIFF('2024-03-23', '2024-03-16') AS DaysDifference;
+
+-- Format a date
+SELECT DATE_FORMAT('2024-03-16', '%Y-%m-%d') AS FormattedDate;
