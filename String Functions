@@ -1,0 +1,29 @@
+-- Concatenating strings
+SELECT CONCAT('Hello', ' ', 'World') AS ConcatenatedString;
+
+-- Getting the length of a string
+SELECT LENGTH('Hello World') AS StringLength;
+
+-- Extracting a substring
+SELECT SUBSTRING('Hello World', 7, 5) AS Substring;
+
+-- Converting to uppercase
+SELECT UPPER('hello world') AS UppercaseString;
+
+-- Converting to lowercase
+SELECT LOWER('HELLO WORLD') AS LowercaseString;
+
+-- Replacing a substring
+SELECT REPLACE('Hello World', 'World', 'Universe') AS ReplacedString;
+
+-- Trimming leading and trailing whitespace
+SELECT TRIM('   Hello World   ') AS TrimmedString;
+
+-- Reversing a string
+SELECT REVERSE('Hello World') AS ReversedString;
+
+-- Finding the position of a substring
+SELECT LOCATE('World', 'Hello World') AS SubstringPosition;
+
+-- Replicating a string
+SELECT REPEAT('Hello ', 3) AS RepeatedString;
