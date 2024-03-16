@@ -1,0 +1,35 @@
+-- Selecting data
+SELECT * FROM Users;
+
+-- Inserting data
+INSERT INTO Users (UserID, Username, Email, Password, JoinDate, UserType)
+VALUES (6, 'mark_smith', 'mark@example.com', 'password456', '2023-06-25', 'Regular');
+
+-- Updating data
+UPDATE Users
+SET UserType = 'Premium'
+WHERE UserID = 6;
+
+-- Deleting data
+DELETE FROM Users
+WHERE UserID = 6;
+
+-- Example of a transaction (begin, commit, rollback)
+BEGIN TRANSACTION;
+
+-- Inserting data
+INSERT INTO Users (UserID, Username, Email, Password, JoinDate, UserType)
+VALUES (6, 'mark_smith', 'mark@example.com', 'password456', '2023-06-25', 'Regular');
+
+-- Committing the transaction
+COMMIT;
+
+-- Example of rolling back a transaction
+BEGIN TRANSACTION;
+
+-- Inserting data
+INSERT INTO Users (UserID, Username, Email, Password, JoinDate, UserType)
+VALUES (6, 'mark_smith', 'mark@example.com', 'password456', '2023-06-25', 'Regular');
+
+-- Rolling back the transaction
+ROLLBACK;
