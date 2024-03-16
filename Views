@@ -1,0 +1,65 @@
+-- UserOrdersView: Lists all orders along with the corresponding user details.
+CREATE VIEW UserOrdersView AS
+SELECT 
+    Orders.OrderID,
+    Users.UserID,
+    Users.Username,
+    Orders.OrderDate,
+    Orders.TotalAmount
+FROM 
+    Orders
+JOIN 
+    Users ON Orders.UserID = Users.UserID;
+
+-- RestaurantRatingView: Displays the average rating of each restaurant.
+CREATE VIEW RestaurantRatingView AS
+SELECT 
+    Restaurants.RestaurantID,
+    Restaurants.Name,
+    AVG(Reviews.Rating) AS AverageRating
+FROM 
+    Restaurants
+LEFT JOIN 
+    Reviews ON Restaurants.RestaurantID = Reviews.RestaurantID
+GROUP BY 
+    Restaurants.RestaurantID, Restaurants.Name;
+
+-- TopMenuItemsView: Shows the top-selling menu items along with their respective quantities sold.
+CREATE VIEW TopMenuItemsView AS
+SELECT 
+    MenuItems.MenuItemID,
+    MenuItems.Name AS MenuItemName,
+    SUM(OrderDetails.Quantity) AS TotalQuantitySold
+FROM 
+    MenuItems
+JOIN 
+    OrderDetails ON MenuItems.MenuItemID = OrderDetails.MenuItemID
+GROUP BY 
+    MenuItems.MenuItemID, MenuItems.Name
+ORDER BY 
+    TotalQuantitySold DESC;
+
+-- UserAddressView: Lists all users along with their addresses.
+CREATE VIEW UserAddressView AS
+SELECT 
+    Users.UserID,
+    Users.Username,
+    Addresses.AddressLine1,
+    Addresses.AddressLine2,
+    Addresses.City,
+    Addresses.PostalCode,
+    Addresses.Country
+FROM 
+    Users
+JOIN 
+    Addresses ON Users.UserID = Addresses.UserID;
+
+-- OrderStatusView: Shows the count of orders for each status.
+CREATE VIEW OrderStatusView AS
+SELECT 
+    Status,
+    COUNT(OrderID) AS OrderCount
+FROM 
+    Orders
+GROUP BY 
+    Status;
