@@ -1,0 +1,86 @@
+-- Inserting into Users table
+INSERT INTO Users (UserID, Username, Email, Password, JoinDate, UserType)
+VALUES
+    (1, 'john_doe', 'john@example.com', 'password123', '2023-01-15', 'Regular'),
+    (2, 'jane_smith', 'jane@example.com', 'abc@123', '2023-02-20', 'Premium'),
+    (3, 'alice_wonderland', 'alice@example.com', 'qwerty', '2023-03-10', 'Regular'),
+    (4, 'bob_miller', 'bob@example.com', 'password123', '2023-04-05', 'Regular'),
+    (5, 'emma_jones', 'emma@example.com', 'password', '2023-05-12', 'Premium');
+
+-- Inserting into Restaurants table
+INSERT INTO Restaurants (RestaurantID, Name, Location, CuisineType, Rating, OpeningTime, ClosingTime)
+VALUES
+    (1, 'Tasty Grill', '123 Main St, Cityville', 'American', 4.5, '10:00:00', '22:00:00'),
+    (2, 'Spice Garden', '456 Elm St, Townsville', 'Indian', 4.2, '11:00:00', '23:00:00'),
+    (3, 'Pasta Palace', '789 Oak St, Villagetown', 'Italian', 4.0, '12:00:00', '21:30:00'),
+    (4, 'Sushi Express', '321 Maple St, Hamletville', 'Japanese', 4.7, '11:30:00', '22:30:00'),
+    (5, 'Mexican Fiesta', '567 Pine St, Hilltown', 'Mexican', 4.3, '10:30:00', '22:30:00');
+
+-- Inserting into Reviews table
+INSERT INTO Reviews (ReviewID, UserID, RestaurantID, Rating, Comment, ReviewDate)
+VALUES
+    (1, 1, 1, 4.0, 'Great burgers and fries!', '2023-01-20'),
+    (2, 2, 2, 4.5, 'Authentic Indian flavors.', '2023-02-25'),
+    (3, 3, 3, 3.8, 'Decent pasta dishes.', '2023-03-15'),
+    (4, 4, 4, 5.0, 'Best sushi in town!', '2023-04-10'),
+    (5, 5, 5, 4.2, 'Tasty tacos and burritos.', '2023-05-18');
+
+-- Inserting into Orders table
+INSERT INTO Orders (OrderID, UserID, RestaurantID, OrderDate, TotalAmount, Status)
+VALUES
+    (1, 1, 1, '2023-01-21', 25.99, 'Completed'),
+    (2, 2, 2, '2023-02-26', 30.50, 'Completed'),
+    (3, 3, 3, '2023-03-16', 18.75, 'Completed'),
+    (4, 4, 4, '2023-04-11', 45.80, 'Completed'),
+    (5, 5, 5, '2023-05-19', 22.45, 'Completed');
+
+-- Inserting into MenuItems table
+INSERT INTO MenuItems (MenuItemID, RestaurantID, Name, Price, Description)
+VALUES
+    (1, 1, 'Classic Burger', 9.99, 'Beef patty with cheese and veggies.'),
+    (2, 1, 'Fries', 3.99, 'Crispy potato fries.'),
+    (3, 2, 'Butter Chicken', 12.99, 'Tender chicken cooked in creamy tomato sauce.'),
+    (4, 2, 'Garlic Naan', 2.50, 'Indian bread with garlic seasoning.'),
+    (5, 3, 'Spaghetti Bolognese', 11.50, 'Spaghetti with meat sauce and Parmesan cheese.');
+
+-- Inserting into Addresses table
+INSERT INTO Addresses (AddressID, UserID, AddressLine1, City, PostalCode, Country)
+VALUES
+    (1, 1, '789 Oak St', 'Villagetown', '12345', 'USA'),
+    (2, 2, '456 Elm St', 'Townsville', '54321', 'USA'),
+    (3, 3, '123 Main St', 'Cityville', '67890', 'USA'),
+    (4, 4, '567 Pine St', 'Hilltown', '98765', 'USA'),
+    (5, 5, '321 Maple St', 'Hamletville', '13579', 'USA');
+
+-- Inserting into PaymentMethods table
+INSERT INTO PaymentMethods (PaymentMethodID, UserID, CardNumber, ExpiryDate, CVV, NameOnCard, BillingAddressID)
+VALUES
+    (1, 1, '1234567890123456', '2025-12-31', '123', 'John Doe', 1),
+    (2, 2, '9876543210987654', '2026-11-30', '456', 'Jane Smith', 2),
+    (3, 3, '2468013579246801', '2025-10-31', '789', 'Alice Wonderland', 3),
+    (4, 4, '1357924680135792', '2026-09-30', '012', 'Bob Miller', 4),
+    (5, 5, '5678901234567890', '2025-08-31', '345', 'Emma Jones', 5);
+
+-- Inserting into Coupons table
+INSERT INTO Coupons (CouponID, Code, Discount, ExpiryDate)
+VALUES
+    (1, 'SAVE20', 20.00, '2023-12-31'),
+    (2, 'FREESHIP', 5.00, '2023-06-30'),
+    (3, 'DEAL10', 10.00, '2023-08-31'),
+    (4, 'WELCOME15', 15.00, '2023-09-30'),
+    (5, 'SAVEMORE', 25.00, '2023-11-30');
+
+-- Inserting into Favorites table
+INSERT INTO Favorites (FavoriteID, UserID, RestaurantID)
+VALUES
+    (1, 1, 2),
+    (2, 2, 3),
+    (3, 3, 4),
+    (4, 4, 5),
+    (5, 5, 1);
+
+-- Inserting into DeliveryAgents table
+INSERT INTO DeliveryAgents (AgentID, Name, Email, Phone)
+VALUES
+    (1, 'David Johnson', 'david@example.com', '123-456-7890'),
+    (2, 'Emily Davis', 'emily@example.com', '987-654
