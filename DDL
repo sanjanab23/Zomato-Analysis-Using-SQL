@@ -1,0 +1,50 @@
+-- Create a new database
+CREATE DATABASE ExampleDB;
+
+-- Use the newly created database
+USE ExampleDB;
+
+-- Create a new table
+CREATE TABLE Employees (
+    EmployeeID INT PRIMARY KEY,
+    Name VARCHAR(100),
+    Department VARCHAR(100),
+    Salary DECIMAL(10, 2)
+);
+
+-- Alter table to add a new column
+ALTER TABLE Employees
+ADD COLUMN JoinDate DATE;
+
+-- Insert data into the table
+INSERT INTO Employees (EmployeeID, Name, Department, Salary, JoinDate)
+VALUES
+    (1, 'John Doe', 'HR', 50000.00, '2022-01-15'),
+    (2, 'Jane Smith', 'IT', 60000.00, '2022-02-20'),
+    (3, 'Alice Wonderland', 'Marketing', 55000.00, '2022-03-10'),
+    (4, 'Bob Miller', 'Finance', 65000.00, '2022-04-05'),
+    (5, 'Emma Jones', 'Operations', 52000.00, '2022-05-12');
+
+-- Alter table to modify column data type
+ALTER TABLE Employees
+MODIFY COLUMN Salary DECIMAL(12, 2);
+
+-- Rename table
+ALTER TABLE Employees
+RENAME TO Staff;
+
+-- Create an index
+CREATE INDEX idx_Department ON Staff (Department);
+
+-- Drop the index
+DROP INDEX idx_Department;
+
+-- Rename the database
+ALTER DATABASE ExampleDB
+RENAME TO NewExampleDB;
+
+-- Drop the table
+DROP TABLE Staff;
+
+-- Drop the database
+DROP DATABASE NewExampleDB;
